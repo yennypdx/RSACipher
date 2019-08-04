@@ -6,25 +6,25 @@
 class RsaClass
 {
 private:
-	int dPrivateKey;
+	unsigned long long int dPrivateKey;
 
 protected:	
-	int pKey;
-	int qKey;
-	int nVal;	
-	int phiVal;
+	unsigned int pKey;
+	unsigned int qKey;
+	unsigned int nVal;
+	unsigned long long int phiVal;
 	
 public:
 	RsaClass();
-	RsaClass(int pValue, int qValue, int eValue, int nValue);
+	RsaClass(unsigned int pValue, unsigned int qValue, unsigned int eValue, unsigned int nValue);
 
 public:
-	int getPrivateKey() { return dPrivateKey; }
-	int getPhiVal() { return phiVal; }
+	unsigned int getPrivateKey() { return dPrivateKey; }
+	unsigned long long getPhiVal() { return phiVal; }
 
 public:
-	int getCipherText(int nPublicKey, int ePublicKey, int msg);
-	int getPlainText(int nPublicKey, int ePublicKey, int msg);
-	int gcd(int a, int b);
-	int modInverse(int eVal, int nVal);
+	unsigned long long int getCipherText(unsigned int nPublicKey, unsigned int ePublicKey, unsigned int msg);
+	unsigned long long int getPlainText(unsigned int nPublicKey, unsigned int msg);
+	unsigned long long int gcd(unsigned int aVal, unsigned int bVal);
+	unsigned long long int modInverse(unsigned int eVal, unsigned int nVal);
 };

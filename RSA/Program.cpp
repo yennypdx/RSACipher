@@ -4,25 +4,25 @@
 int main()
 {
 	/* Assumed Keys Generated */
-	int p = 907;
-	int q = 773;
+	unsigned int p = 907;
+	unsigned int q = 773;
 	
 	/* Public Keys */
-	int ePublicKey = 11;
-	int nPublicKey = p * q;
+	unsigned int ePublicKey = 11;
+	unsigned int nPublicKey = p * q;
 
 	RsaClass rsa(p, q, ePublicKey, nPublicKey);
 	
 	/* Plain Text from User */
-	int originalMessage = 4;
+	unsigned int originalMessage = 4;
 	std::cout << "MessageText: " << originalMessage << std::endl;
 	
 	/* Encryption */
-	int ciphered =  rsa.getCipherText(nPublicKey, ePublicKey, originalMessage);
+	unsigned long long int ciphered =  rsa.getCipherText(nPublicKey, ePublicKey, originalMessage);
 	std::cout << "CipheredText: " << ciphered << std::endl;
 
 	/* Decryption */
-	int message = rsa.getPlainText(nPublicKey, nPublicKey, ciphered);
+	unsigned long long int message = rsa.getPlainText(nPublicKey, ciphered);
 	std::cout << "Decrypted Message: " << message << std::endl;
 
 	return 0;

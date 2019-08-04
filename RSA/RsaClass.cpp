@@ -9,52 +9,54 @@ RsaClass::RsaClass()
 	phiVal = 0;
 }
 
-RsaClass::RsaClass(int pValue, int qValue, int eValue, int nValue)
-{	
+RsaClass::RsaClass(unsigned int pValue, unsigned int qValue, 
+	unsigned int eValue, unsigned int nValue)
+{
 	pKey = pValue;
 	qKey = qValue;
-	nVal = nValue;	
-	phiVal = ((pValue-1)*(qValue-1));
+	nVal = nValue;
+	phiVal = ((pValue - 1) * (qValue - 1));
 	dPrivateKey = modInverse(eValue, phiVal);
 }
 
-int RsaClass::getCipherText(int nPublicKey, int ePublicKey, int msg)
+unsigned long long int RsaClass::getCipherText(unsigned int nPublicKey, 
+	unsigned int ePublicKey, unsigned int msg)
 {
 	// Encryption c = (msg ^ e) % n
-	int cipheredText = pow(msg, ePublicKey);
+	unsigned long long int cipheredText = pow(msg, ePublicKey);
 	cipheredText = cipheredText % nPublicKey;
 
 	return cipheredText;
 }
 
-int RsaClass::getPlainText(int nPublicKey, int ePublicKey, int msg)
+unsigned long long int RsaClass::getPlainText(unsigned int nPublicKey, unsigned int msg)
 {
-	int dVal = getPrivateKey();
+	unsigned long long dVal = getPrivateKey();
 	// Decryption m = (c ^ d) % n 
-	int plainText = pow(msg, dVal);
+	unsigned long long plainText = pow(msg, dVal);
 	plainText = plainText % nPublicKey;
 
 	return plainText;
 }
 
-int RsaClass::gcd(int a, int b)
+unsigned long long int RsaClass::gcd(unsigned int aVal, unsigned int bVal)
 {
-	int temp;
+	unsigned long long temp;
 	while (1)
 	{
-		temp = a % b;
+		temp = aVal % bVal;
 		if (temp == 0)
-			return b;
-		a = b;
-		b = temp;
+			return bVal;
+		aVal = bVal;
+		bVal = temp;
 	}
 }
 
-int RsaClass::modInverse(int eVal, int phi)
+unsigned long long int RsaClass::modInverse(unsigned int eVal, unsigned int phi)
 {
 	// a x ≡ 1 (mod m) 
 	eVal = eVal % phi;
-	for (int x = 1; x < phi; x++)
+	for (unsigned long long int x = 1; x < phi; x++)
 		if ((eVal * x) % phi == 1)
 			return x;
 }

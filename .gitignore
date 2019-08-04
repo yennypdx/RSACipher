@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+*.db
+*.opendb
+.vs/RSA/v16/ipch/AutoPCH/bda71cffdbcc7277/PROGRAM.ipch
+*.pdb
+*.ilk
+*.idb
+*.txt
+*.tlog
+*.lastbuildstate
+*.log
+*.ipch
+*.suo
