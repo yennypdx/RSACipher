@@ -15,7 +15,7 @@ RsaClass::RsaClass(unsigned int pValue, unsigned int qValue,
 	pKey = pValue;
 	qKey = qValue;
 	nVal = nValue;
-	phiVal = ((pValue - 1) * (qValue - 1));
+	phiVal = (pValue - 1) * (qValue - 1);
 	dPrivateKey = modInverse(eValue, phiVal);
 }
 
@@ -33,7 +33,7 @@ unsigned long long int RsaClass::getPlainText(unsigned int nPublicKey, unsigned 
 {
 	unsigned long long dVal = getPrivateKey();
 	// Decryption m = (c ^ d) % n 
-	unsigned long long plainText = pow(msg, dVal);
+	unsigned long long int plainText = pow(msg, dVal);
 	plainText = plainText % nPublicKey;
 
 	return plainText;
@@ -41,7 +41,7 @@ unsigned long long int RsaClass::getPlainText(unsigned int nPublicKey, unsigned 
 
 unsigned long long int RsaClass::gcd(unsigned int aVal, unsigned int bVal)
 {
-	unsigned long long temp;
+	unsigned long long int temp;
 	while (1)
 	{
 		temp = aVal % bVal;

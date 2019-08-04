@@ -12,7 +12,7 @@ protected:
 	unsigned int pKey;
 	unsigned int qKey;
 	unsigned int nVal;
-	unsigned long long int phiVal;
+	unsigned int phiVal;
 	
 public:
 	RsaClass();
