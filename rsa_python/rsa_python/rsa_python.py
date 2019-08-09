@@ -1,15 +1,21 @@
 import gmpy2
-number_to_encrypt = 11123123
 
-# variables
-p = 102433
-q = 104233
-e = 10321
+print("------------------------------------")
+print("          RSA CRYPTOGRAPHY          ")
+print("------------------------------------\n")
+
+# number_to_encrypt = 11123123
+number_to_encrypt = input("Enter your plain text to encrypt: ")
+
+# generate the keys here
+p  = int(input("Enter the number for p-value: "))
+q = int(input("Enter the number for q-value: "))
+e = int(input("Enter the number for e-value: "))
 
 n = p*q
-
 phi_n = (p-1)*(q-1)
 print("Totient: ", phi_n)
+
 def is_coprime_phi(phi_n, coprime_to_check):
     while phi_n % coprime_to_check == 0:
         coprime_to_check = input("Enter a prime number, to check if coprime with phi_n")
@@ -35,11 +41,12 @@ def modinv(coprime, phi_n):
     
 d = modinv(e, phi_n)
 print("d variable: ", d)
-
 pub_k = [e, n]
-
+print("e-value: ", e)
+print("n-value: ", n)
 priv_k = [d, n]
-print("Priv key: ", priv_k)
+print("d-value: ", d)
+
 def encrypt_this(m):
     result = gmpy2.powmod(m, e, n)
     return result
