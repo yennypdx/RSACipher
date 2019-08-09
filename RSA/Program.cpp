@@ -14,14 +14,14 @@ unsigned long long int getPlainText(unsigned long long int nPublicKey, unsigned 
 	unsigned long long int msg);
 
 // to be deleted
-unsigned int generatePKey(){return 11930;}
-unsigned int generateQKey(){return 12473;}
+unsigned int generatePKey(){return 997;}
+unsigned int generateQKey(){return 757;}
 
 int main()
 {
 	unsigned long long int pKey = 0;
 	unsigned long long int qKey = 0;
-	unsigned long long int ePublicKey = 10000;
+	unsigned long long int ePublicKey = 11;
 	unsigned long long int nPublicKey = 0;
 	unsigned long long int totient = 0;
 	unsigned long long int dKey = 0;
