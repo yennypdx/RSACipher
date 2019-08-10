@@ -15,8 +15,8 @@ e3 = 3306811
 print("------------------------------------")
 print("          RSA CRYPTOGRAPHY          ")
 print("------------------------------------\n")
-
 number_to_encrypt = int(input("Enter your plain text to encrypt: "))
+
 print("\nSet #1")
 print("p=", p)
 print("q=", q)
@@ -34,8 +34,13 @@ p = int(input("\nEnter the number for p-value: "))
 q = int(input("Enter the number for q-value: "))
 e = int(input("Enter the number for e-value: "))
 
+
+
+print()
 n = p*q
 phi_n = (p-1)*(q-1)
+print("n-Value: ", n)
+print("totient value: ", phi_n)
 
 def is_coprime_phi(phi_n, coprime_to_check):
     while phi_n % coprime_to_check == 0:
@@ -61,8 +66,10 @@ def modinv(coprime, phi_n):
         return x % phi_n
     
 d = modinv(e, phi_n)
+print("d-value: ", d)
 pub_k = [e, n]
 priv_k = [d, n]
+
 
 def encrypt_this(m):
     result = gmpy2.powmod(m, e, n)
@@ -72,8 +79,14 @@ def decrypt_this(c):
     plain = gmpy2.powmod(c,d,n)
     return plain
 
-enc = encrypt_this(number_to_encrypt)
-print("Encrypted number: ", enc)
-
-dec = decrypt_this(enc)
-print("Decrypted plain number: ", dec)
+choice = input("Would you like to [e]ncrypt or [d]ecrypt: ")
+if(choice == 'e'):
+    print()
+    enc = encrypt_this(number_to_encrypt)
+    print("Encrypted number: ", enc)
+    print()
+else:
+    print(d)
+    dec = decrypt_this(number_to_encrypt)
+    print("Decrypted plain number: ", dec)
+    print()
