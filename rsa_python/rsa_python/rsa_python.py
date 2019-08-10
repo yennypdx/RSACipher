@@ -1,20 +1,41 @@
 import gmpy2
 
+p = 15485867
+q = 32452867
+e = 9192679
+
+p2 = 14567881
+q2 = 15245513
+e2 = 12136141
+
+p3 = 14368993
+q3 = 11508703
+e3 = 3306811
+
 print("------------------------------------")
 print("          RSA CRYPTOGRAPHY          ")
 print("------------------------------------\n")
 
-# number_to_encrypt = 11123123
-number_to_encrypt = input("Enter your plain text to encrypt: ")
-
-# generate the keys here
-p  = int(input("Enter the number for p-value: "))
+number_to_encrypt = int(input("Enter your plain text to encrypt: "))
+print("\nSet #1")
+print("p=", p)
+print("q=", q)
+print("e=", e)
+print("Set #2")
+print("p=", p2)
+print("q=", q2)
+print("e=", e2)
+print("Set #3")
+print("p=", p3)
+print("q=", q3)
+print("e=", e3)
+print("Please choose the set you are going to use from the above list!")
+p = int(input("\nEnter the number for p-value: "))
 q = int(input("Enter the number for q-value: "))
 e = int(input("Enter the number for e-value: "))
 
 n = p*q
 phi_n = (p-1)*(q-1)
-print("Totient: ", phi_n)
 
 def is_coprime_phi(phi_n, coprime_to_check):
     while phi_n % coprime_to_check == 0:
@@ -40,12 +61,8 @@ def modinv(coprime, phi_n):
         return x % phi_n
     
 d = modinv(e, phi_n)
-print("d variable: ", d)
 pub_k = [e, n]
-print("e-value: ", e)
-print("n-value: ", n)
 priv_k = [d, n]
-print("d-value: ", d)
 
 def encrypt_this(m):
     result = gmpy2.powmod(m, e, n)
